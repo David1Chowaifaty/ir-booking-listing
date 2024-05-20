@@ -5,14 +5,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
-    <script type="module" src="dist/ir-webcmp/ir-webcmp.esm.js"></script>
-    <script src="dist/ir-webcmp/assets/scripts/jquery.min.js"></script>
-    <script src="dist/ir-webcmp/assets/scripts/daterangepicker/moment.min.js"></script>
-    <script src="dist/ir-webcmp/assets/scripts/daterangepicker/daterangepicker.js"></script>
-    <script src="dist/ir-webcmp/assets/scripts/inputmask/jquery.inputmask.js"></script>
-    <script src="dist/ir-webcmp/assets/scripts/bootstrap.bundle.min.js"></script>
-    <script src="dist/ir-webcmp/assets/scripts/toastr/toastr.min.js"></script>
-    <link rel="stylesheet" href="dist/ir-webcmp/assets/scripts/daterangepicker/daterangepicker.css">
+    <script type="module" src="https://ronyrizk.github.io/manage/dist/ir-webcmp/ir-webcmp.esm.js"></script>
+    <script src="https://ronyrizk.github.io/manage/dist/ir-webcmp/assets/scripts/jquery.min.js"></script>
+    <script
+        src="https://ronyrizk.github.io/manage/dist/ir-webcmp/assets/scripts/daterangepicker/moment.min.js"></script>
+    <script
+        src="https://ronyrizk.github.io/manage/dist/ir-webcmp/assets/scripts/daterangepicker/daterangepicker.js"></script>
+    <script
+        src="https://ronyrizk.github.io/manage/dist/ir-webcmp/assets/scripts/inputmask/jquery.inputmask.js"></script>
+    <script src="https://ronyrizk.github.io/manage/dist/ir-webcmp/assets/scripts/bootstrap.bundle.min.js"></script>
+    <script src="https://ronyrizk.github.io/manage/dist/ir-webcmp/assets/scripts/toastr/toastr.min.js"></script>
+    <link rel="stylesheet"
+        href="https://ronyrizk.github.io/manage/dist/ir-webcmp/assets/scripts/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" href="">
     <style>
         body {
@@ -24,15 +28,36 @@
 <body>
     <ir-common></ir-common>
     <ir-booking-listing baseurl="https://gateway.igloorooms.com/IR" language="en"></ir-booking-listing>
-    <link rel="stylesheet" href="dist/ir-webcmp/assets/scripts/toastr/toastr.css" type="text/css">
+    <link rel="stylesheet" href="https://ronyrizk.github.io/manage/dist/ir-webcmp/assets/scripts/toastr/toastr.css"
+        type="text/css">
 
     <script>
         const booking_listing = document.querySelector("ir-booking-listing");
-        function init() {
-            booking_listing.propertyid = "42";
-            booking_listing.ticket = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MTc0MTcwMzIsIkNMQUlNLTAxIjoicktLMi9DY1dQQnM9IiwiQ0xBSU0tMDIiOiI5UStMQm93VTl6az0iLCJDTEFJTS0wMyI6Ilp3Tys5azJoTzUwPSIsIkNMQUlNLTA0IjoiQUVxVnRCMm1kWTg9IiwiQ0xBSU0tMDUiOiJFQTEzejA3ejBUcWRkM2gwNElyYThLUjJ3WThWTXhzNyJ9.UDqLqSzEOzkG1td4hAQSoti48phaV_ESaiqTJUit2DI";
+
+        /**
+          * Logs in a user by sending a POST request with username and password.
+          *
+          * @param {string} username - The username of the user, must be a string.
+          * @param {string} password - The password of the user, must be a string.
+          * @returns {Promise<void>} A promise that resolves when the login is completed.
+        */
+        async function login(username, password) {
+            const result = await fetch('https://gateway.igloorooms.com/IR/Authenticate', {
+                method: "POST",
+                body: JSON.stringify({ username, password }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            const data = await result.json();
+            if (data.ExceptionMsg !== "") {
+                throw new Error(data.ExceptionMsg)
+            }
+            const token = data["My_Result"]
+            booking_listing.ticket = token;
         }
-        init()
+        booking_listing.propertyid = "42";
+        login("A35", "12345")
     </script>
 
 </body>
