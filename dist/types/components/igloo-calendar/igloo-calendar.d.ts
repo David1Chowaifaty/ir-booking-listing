@@ -1,0 +1,111 @@
+import { EventEmitter } from '../../stencil-public-runtime';
+import { Moment } from 'moment';
+import { IReallocationPayload, IRoomNightsData, IRoomNightsDataEventPayload } from '../../models/property-types';
+import { TIglBookPropertyPayload } from '../../models/igl-book-property';
+export declare class IglooCalendar {
+    propertyid: number;
+    from_date: string;
+    to_date: string;
+    language: string;
+    baseurl: string;
+    loadingMessage: string;
+    currencyName: string;
+    ticket: string;
+    private element;
+    calendarData: {
+        [key: string]: any;
+    };
+    days: {
+        [key: string]: any;
+    }[];
+    scrollViewDragging: boolean;
+    dialogData: IReallocationPayload | null;
+    bookingItem: TIglBookPropertyPayload | null;
+    editBookingItem: TIglBookPropertyPayload | null;
+    showLegend: boolean;
+    showPaymentDetails: boolean;
+    showToBeAssigned: boolean;
+    unassignedDates: {};
+    roomNightsData: IRoomNightsData | null;
+    renderAgain: boolean;
+    showBookProperty: boolean;
+    totalAvailabilityQueue: {
+        room_type_id: number;
+        date: string;
+        availability: number;
+    }[];
+    highlightedDate: string;
+    calDates: {
+        from: string;
+        to: string;
+    };
+    dragOverHighlightElement: EventEmitter;
+    moveBookingTo: EventEmitter;
+    calculateUnassignedDates: EventEmitter;
+    reduceAvailableUnitEvent: EventEmitter<{
+        fromDate: string;
+        toDate: string;
+    }>;
+    revertBooking: EventEmitter;
+    private bookingService;
+    private roomService;
+    private eventsService;
+    private toBeAssignedService;
+    private countryNodeList;
+    private visibleCalendarCells;
+    private scrollContainer;
+    private today;
+    private reachedEndOfCalendar;
+    private socket;
+    private availabilityTimeout;
+    ticketChanged(): void;
+    componentWillLoad(): void;
+    setUpCalendarData(roomResp: any, bookingResp: any): void;
+    initializeApp(): Promise<void>;
+    private updateTotalAvailability;
+    componentDidLoad(): void;
+    handleDeleteEvent(ev: CustomEvent): Promise<void>;
+    checkBookingAvailability(data: any): any;
+    updateBookingEventsDateRange(eventData: any): void;
+    setRoomsData(roomServiceResp: any): void;
+    getLegendData(aData: any): any;
+    getDateStr(date: any, locale?: string): string;
+    scrollToElement(goToDate: any): void;
+    private AddOrUpdateRoomBookings;
+    private transformDateForScroll;
+    scrollPageToRoom(event: CustomEvent): void;
+    handleShowDialog(event: CustomEvent): void;
+    handleShowRoomNightsDialog(event: CustomEvent<IRoomNightsData>): void;
+    handleBookingDatasChange(event: CustomEvent): void;
+    shouldRenderCalendarView(): any;
+    onOptionSelect(event: CustomEvent<{
+        [key: string]: any;
+    }>): void;
+    addDatesToCalendar(fromDate: string, toDate: string): Promise<void>;
+    handleDateSearch(dates: {
+        start: Moment;
+        end: Moment;
+    }): Promise<void>;
+    closeSideMenu(): void;
+    scrollViewDragPos: {
+        top: number;
+        left: number;
+        x: number;
+        y: number;
+    };
+    dragScrollContent(event: MouseEvent): void;
+    onScrollContentMoveHandler: EventListener;
+    onScrollContentMoveEndHandler: EventListener;
+    calendarScrolling(): void;
+    hasAncestorWithClass(element: HTMLElement, className: string): boolean;
+    showBookingPopupEventDataHandler(event: CustomEvent): void;
+    updateEventDataHandler(event: CustomEvent): void;
+    dragOverEventDataHandler(event: CustomEvent): void;
+    highlightDragOver(hightLightElement: any, currentPosition: any): Promise<void>;
+    handleModalConfirm(): void;
+    handleModalCancel(): void;
+    handleRoomNightsDialogClose(e: CustomEvent<IRoomNightsDataEventPayload>): void;
+    handleSideBarToggle(e: CustomEvent<boolean>): void;
+    handleCloseBookingWindow(): void;
+    render(): any;
+}

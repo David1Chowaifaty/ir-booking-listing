@@ -1,0 +1,36 @@
+import { EventEmitter } from '../../stencil-public-runtime';
+import { selectOption } from '../../common/models';
+export declare class IrSelect {
+    name: string;
+    data: selectOption[];
+    label: string;
+    selectStyles: string;
+    selectContainerStyle: string;
+    selectedValue: any;
+    required: boolean;
+    LabelAvailable: boolean;
+    firstOption: string;
+    selectStyle: boolean;
+    showFirstOption: boolean;
+    submited: boolean;
+    size: 'sm' | 'md' | 'lg';
+    textSize: 'sm' | 'md' | 'lg';
+    labelPosition: 'left' | 'right' | 'center';
+    labelBackground: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | null;
+    labelColor: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark';
+    labelBorder: 'theme' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'none';
+    labelWidth: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+    select_id: string;
+    initial: boolean;
+    valid: boolean;
+    selectChange: EventEmitter;
+    private selectEl;
+    watchHandler(newValue: string): void;
+    watchHandler2(newValue: boolean): void;
+    handleButtonAnimation(e: CustomEvent): void;
+    componentwillload(): void;
+    disconnectedCallback(): void;
+    handleSelectChange(event: any): void;
+    count: number;
+    render(): any;
+}

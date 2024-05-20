@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+    <script type="module" src="dist/ir-webcmp/ir-webcmp.esm.js"></script>
+    <script src="dist/ir-webcmp/assets/scripts/jquery.min.js"></script>
+    <script src="dist/ir-webcmp/assets/scripts/daterangepicker/moment.min.js"></script>
+    <script src="dist/ir-webcmp/assets/scripts/daterangepicker/daterangepicker.js"></script>
+    <script src="dist/ir-webcmp/assets/scripts/inputmask/jquery.inputmask.js"></script>
+    <script src="dist/ir-webcmp/assets/scripts/bootstrap.bundle.min.js"></script>
+    <script src="dist/ir-webcmp/assets/scripts/toastr/toastr.min.js"></script>
+    <link rel="stylesheet" href="dist/ir-webcmp/assets/scripts/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="">
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <ir-common></ir-common>
+    <ir-booking-listing baseurl="https://gateway.igloorooms.com/IR" language="en"></ir-booking-listing>
+    <link rel="stylesheet" href="dist/ir-webcmp/assets/scripts/toastr/toastr.css" type="text/css">
+
+    <script>
+        const booking_listing = document.querySelector("ir-booking-listing");
+        function init() {
+            booking_listing.propertyid = "42";
+            booking_listing.ticket = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MTc0MTcwMzIsIkNMQUlNLTAxIjoicktLMi9DY1dQQnM9IiwiQ0xBSU0tMDIiOiI5UStMQm93VTl6az0iLCJDTEFJTS0wMyI6Ilp3Tys5azJoTzUwPSIsIkNMQUlNLTA0IjoiQUVxVnRCMm1kWTg9IiwiQ0xBSU0tMDUiOiJFQTEzejA3ejBUcWRkM2gwNElyYThLUjJ3WThWTXhzNyJ9.UDqLqSzEOzkG1td4hAQSoti48phaV_ESaiqTJUit2DI";
+        }
+        init()
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+{"version":3,"file":"events.dto.js","sourceRoot":"","sources":["../../src/models/events.dto.ts"],"names":[],"mappings":"","sourcesContent":["export interface ReallocateEventUpdateDTO {\n  oldPool: string;\n  newPool: string;\n  from_date: string;\n  to_date: string;\n  pr_id: number;\n}\n"]}

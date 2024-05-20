@@ -1,0 +1,1 @@
+{"version":3,"file":"date-range.js","sourceRoot":"","sources":["../../src/models/date-range.ts"],"names":[],"mappings":"","sourcesContent":["export interface IDateRange {\n  from_date: Date;\n  to_date: Date;\n}\nexport interface DateRangeSelection {\n  fromDate: number;\n  toDate: number;\n  fromDateStr: string;\n  toDateStr: string;\n  dateDifference: number;\n}\n"]}
